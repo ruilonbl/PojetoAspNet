@@ -1,4 +1,19 @@
+using Microsoft.EntityFrameworkCore;
+using AspNet.Data;
+using System.Configuration;
+
+
+// Remova a referência ao namespace System.Configuration, pois não é necessária aqui
+
 var builder = WebApplication.CreateBuilder(args);
+var serverVersion = new MySqlServerVersion(new Version(8, 0, 23));
+builder.Services.AddDbContext<AspNetContext>(options =>
+    options.UseMySql(builder.Configuration.GetConnectionString("AspNetContext"), serverVersion));
+;
+
+
+// O restante do seu código permanece inalterado
+
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();

@@ -1,4 +1,4 @@
-﻿using AspNet.Models;
+﻿using AspNet.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -15,6 +15,7 @@ namespace AspNet.Controllers
 
         public IActionResult Index()
         {
+            ViewData["email"] = "tteste";
             return View();
         }
 
